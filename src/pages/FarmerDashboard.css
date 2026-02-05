@@ -1,0 +1,219 @@
+.farmer-dashboard {
+  padding: 30px;
+  width: 100%;
+  max-width: none;
+  background: #f4f8f5;
+}
+
+.farmer-dashboard h1 {
+  color: #2e7d32;
+  margin-bottom: 25px;
+}
+/* ================= UPLOAD PRODUCT SECTION ================= */
+
+.dashboard-section {
+  background: #ffffff;
+  padding: 25px;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-section h2 {
+  margin-bottom: 20px;
+  color: #2e7d32;
+  font-size: 22px;
+}
+
+/* Input layout */
+.dashboard-section input[type="text"],
+.dashboard-section input[type="number"],
+.dashboard-section input[type="file"],
+.dashboard-section input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.dashboard-section input:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.15);
+}
+
+/* File input */
+.dashboard-section input[type="file"] {
+  padding: 8px;
+  background: #f9f9f9;
+  cursor: pointer;
+}
+
+/* Image preview */
+.preview-img {
+  display: block;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  margin: 10px 0 15px;
+  border-radius: 10px;
+  border: 2px solid #e0e0e0;
+}
+
+/* Add product button */
+.dashboard-section button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #43a047, #2e7d32);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.dashboard-section button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(46, 125, 50, 0.3);
+}
+
+.dashboard-section button:active {
+  transform: scale(0.98);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .dashboard-section {
+    padding: 18px;
+  }
+
+  .dashboard-section h2 {
+    font-size: 20px;
+  }
+}
+
+
+/* Product Form */
+.product-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.product-form input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.product-form button {
+  grid-column: span 2;
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.preview-img {
+  width: 120px;
+  border-radius: 10px;
+}
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.product-card {
+  background: #f9fff9;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.product-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Stock Badge */
+.stock-badge {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.stock-badge.available {
+  background: #c8e6c9;
+  color: #1b5e20;
+}
+
+.stock-badge.out {
+  background: #ffcdd2;
+  color: #b71c1c;
+}
+
+/* Toggle Button */
+.stock-btn {
+  margin-top: 10px;
+  padding: 8px;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  background: #ff9800;
+  color: white;
+}
+
+/* Orders */
+.orders-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+.order-status.booked {
+  color: orange;
+  font-weight: bold;
+}
+
+.order-status.packed {
+  color: green;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}

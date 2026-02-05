@@ -1,0 +1,45 @@
+/* // ===============================
+// src/pages/Home.css
+// =============================== */
+.home {
+  flex: 1;
+  padding: 20px;
+}
+
+.hero {
+  background: url('https://images.unsplash.com/photo-1523348837708-15d4a09cfac2') center/cover;
+  color: white;
+  padding: 80px 40px;
+  border-radius: 12px;
+}
+
+.hero h2 {
+  font-size: 40px;
+}
+
+.hero button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #43a047;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.features {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 18px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}

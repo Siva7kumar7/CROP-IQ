@@ -1,0 +1,25 @@
+.success-page {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.success-page h2 {
+  color: #38a169;
+}
+
+.success-page button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #38a169;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.success-page button:hover {
+  background: #2f855a;
+}

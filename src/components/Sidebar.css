@@ -1,0 +1,19 @@
+/* // ===============================
+// src/components/Sidebar.css
+// =============================== */
+.sidebar {
+  width: 220px;
+  background: #f1f8e9;
+  padding: 20px;
+  min-height: calc(100vh - 140px);
+}
+
+.sidebar p {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.sidebar p:hover {
+  background-color: #c5e1a5;
+}
