@@ -1,0 +1,17 @@
+/* ===============================
+   Footer
+=============================== */
+.footer {
+  background: linear-gradient(135deg, #0d3b1e, #1b5e20);
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 18px 20px;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer p {
+  margin: 0;
+}

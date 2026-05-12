@@ -1,0 +1,228 @@
+/* ================= LANDING WRAPPER ================= */
+.landing {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ================= BACKGROUND SLIDESHOW ================= */
+.bg-slideshow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  animation: fade 18s infinite;
+  filter: brightness(0.45);
+}
+
+.slide1 {
+  background-image: url("https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=1920&q=80");
+  animation-delay: 0s;
+}
+
+.slide2 {
+  background-image: url("https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=1920&q=80");
+  animation-delay: 6s;
+}
+
+.slide3 {
+  background-image: url("https://images.unsplash.com/photo-1601598851547-4302969d0614?w=1920&q=80");
+  animation-delay: 12s;
+}
+
+@keyframes fade {
+  0% { opacity: 0; transform: scale(1.05); }
+  10% { opacity: 1; }
+  30% { opacity: 1; }
+  40% { opacity: 0; }
+  100% { opacity: 0; transform: scale(1.1); }
+}
+
+/* ================= DARK OVERLAY ================= */
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.55),
+    rgba(11, 61, 46, 0.5)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+/* ================= MAIN CARD ================= */
+.content {
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+  padding: 50px 40px;
+  border-radius: 28px;
+
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+
+  animation: popIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes popIn {
+  from {
+    transform: translateY(40px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* ================= TYPOGRAPHY ================= */
+.title {
+  font-size: 48px;
+  font-weight: 800;
+  color: #0b3d2e;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.title span {
+  background: linear-gradient(135deg, #00c853, #2e7d32);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #2e7d32;
+  font-weight: 600;
+  margin-top: 8px;
+  letter-spacing: 0.5px;
+}
+
+.desc {
+  font-size: 15px;
+  color: #666;
+  margin: 20px auto;
+  max-width: 520px;
+  line-height: 1.7;
+}
+
+/* ================= BUTTONS ================= */
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.btn {
+  padding: 13px 30px;
+  border-radius: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+}
+
+/* primary */
+.primary {
+  background: linear-gradient(135deg, #00c853, #2e7d32);
+  color: white;
+  box-shadow: 0 8px 24px rgba(0, 200, 83, 0.25);
+}
+
+.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 200, 83, 0.35);
+}
+
+/* secondary */
+.secondary {
+  border: 2px solid #2e7d32;
+  color: #2e7d32;
+  background: transparent;
+}
+
+.secondary:hover {
+  background: #2e7d32;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(46, 125, 50, 0.25);
+}
+
+/* ================= FEATURES ================= */
+.landing-features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.landing-features div {
+  background: linear-gradient(135deg, #f5f5f5, #e8f5e9);
+  padding: 14px 12px;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #2e7d32;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(46, 125, 50, 0.08);
+}
+
+.landing-features div:hover {
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.1);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .content {
+    padding: 35px 25px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .landing-features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-features {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+}

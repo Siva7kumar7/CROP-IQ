@@ -1,0 +1,120 @@
+/* ===== PAGE BACKGROUND ===== */
+.success-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+  position: relative;
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===== FLOATING LEAVES ===== */
+.leaf {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: rgba(76, 175, 80, 0.2);
+  border-radius: 50%;
+  animation: float 8s infinite ease-in-out;
+}
+
+.leaf1 { top: 10%; left: 20%; }
+.leaf2 { bottom: 15%; right: 25%; animation-delay: 2s; }
+.leaf3 { top: 50%; left: 70%; animation-delay: 4s; }
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+/* ===== CARD ===== */
+.success-card {
+  background: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  transform: scale(0.8);
+  opacity: 0;
+  transition: 0.5s ease;
+}
+
+.success-card.show {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* ===== CHECKMARK ===== */
+.checkmark {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+}
+
+.circle {
+  width: 80px;
+  height: 80px;
+  border: 4px solid #4caf50;
+  border-radius: 50%;
+  animation: pop 0.4s ease forwards;
+}
+
+.tick {
+  position: absolute;
+  top: 22px;
+  left: 18px;
+  width: 25px;
+  height: 50px;
+  border-right: 4px solid #4caf50;
+  border-bottom: 4px solid #4caf50;
+  transform: rotate(45deg) scale(0);
+  animation: tick 0.4s 0.4s forwards;
+}
+
+@keyframes pop {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes tick {
+  0% { transform: rotate(45deg) scale(0); }
+  100% { transform: rotate(45deg) scale(1); }
+}
+
+/* ===== TEXT ===== */
+.success-card h2 {
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+.success-card p {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* ===== BUTTON ===== */
+.success-card button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #2e7d32, #66bb6a);
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.success-card button:hover {
+  transform: scale(1.05);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 500px) {
+  .success-card {
+    width: 90%;
+  }
+}
