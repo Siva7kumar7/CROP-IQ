@@ -145,7 +145,7 @@ const Marketplace = () => {
                   <h3>{item.name}</h3>
 
                   <p className="seller">
-                    👨‍🌾 {item.seller || "Local Farmer"}
+                    👨‍🌾 {item.farmer || "Local Farmer"}
                   </p>
 
                   <p className="location">

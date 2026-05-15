@@ -38,7 +38,8 @@ const NAV_KEYWORDS = {
   "/marketplace":      ["market","shop","buy","products","store","சந்தை","வாங்க","கடை","பொருட்கள்"],
   "/farmer-dashboard": ["farmer","dashboard","my products","add product","விவசாயி","டாஷ்போர்ட்","என் பொருட்கள்"],
   "/weather":          ["weather","rain","climate","forecast","வானிலை","மழை","காலநிலை"],
-  "/disease":          ["disease","plant","detect","leaf","infection","நோய்","தாவரம்","இலை","கண்டறி"],
+  "/plant-detection":  ["disease","plant","detect","leaf","infection","நோய்","தாவரம்","இலை","கண்டறி"],
+  "/my-orders":        ["order","track","status","buy","purchase","ஆர்டர்","நிலை","வாங்கல்"],
   "/cart":             ["cart","basket","checkout","கார்ட்","வண்டி","வாங்கல்"],
 };
 
@@ -156,7 +157,7 @@ export default function AgriAssistant() {
           "anthropic-dangerous-direct-browser-access": "true",
         },
         body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
+          model: "claude-3-5-sonnet-20241022",
           max_tokens: 1000,
           system: SYSTEM_PROMPT,
           messages: newHistory,
@@ -225,31 +226,68 @@ export default function AgriAssistant() {
   /* ── VOICE INPUT ── */
   const startListening = () => {
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SR) { alert(t.voiceNotSupported); return; }
+    if (!SR) {
+      console.error("Speech Recognition not supported in this browser.");
+      alert(t.voiceNotSupported);
+      return;
+    }
 
     stopSpeaking();
 
-    const recognition = new SR();
-    recognitionRef.current = recognition;
-    recognition.lang = lang === "ta" ? "ta-IN" : "en-IN";
-    recognition.interimResults = false;
-    recognition.maxAlternatives = 1;
-    recognition.continuous = false;
+    try {
+      const recognition = new SR();
+      recognitionRef.current = recognition;
+      recognition.lang = lang === "ta" ? "ta-IN" : "en-IN";
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+      recognition.continuous = false;
 
-    recognition.onstart = () => setIsListening(true);
-    recognition.onresult = (e) => {
-      const transcript = e.results[0][0].transcript;
-      setInput(transcript);
-      recognition.stop();
-      send(transcript);
-    };
-    recognition.onerror = () => setIsListening(false);
-    recognition.onend   = () => setIsListening(false);
-    recognition.start();
+      recognition.onstart = () => {
+        console.log("Voice recognition started...");
+        setIsListening(true);
+      };
+
+      recognition.onresult = (e) => {
+        const transcript = e.results[0][0].transcript;
+        console.log("Captured voice:", transcript);
+        setInput(transcript);
+        recognition.stop();
+        send(transcript);
+      };
+
+      recognition.onerror = (event) => {
+        console.error("Speech recognition error:", event.error);
+        setIsListening(false);
+        if (event.error === 'not-allowed') {
+          alert("Microphone access denied. Please enable microphone permissions in your browser settings.");
+        } else if (event.error === 'network') {
+          alert("Network error occurred during speech recognition.");
+        }
+      };
+
+      recognition.onend = () => {
+        console.log("Voice recognition ended.");
+        setIsListening(false);
+        recognitionRef.current = null;
+      };
+
+      if (isListening) {
+        console.warn("Recognition already active, stopping first...");
+        recognition.stop();
+      }
+      
+      recognition.start();
+    } catch (err) {
+      console.error("Error starting recognition:", err);
+      setIsListening(false);
+    }
   };
 
   const stopListening = () => {
-    recognitionRef.current?.stop();
+    if (recognitionRef.current) {
+      recognitionRef.current.stop();
+      console.log("Voice recognition manually stopped.");
+    }
     setIsListening(false);
   };
 
@@ -458,8 +496,8 @@ export default function AgriAssistant() {
                 <div className="aa-ttl">
                   {t.title}
                   {!API_KEY && (
-                    <span className="aa-offline-badge" title="Local mode active">
-                      {lang === 'en' ? 'Offline' : 'ஆஃப்லைன்'}
+                    <span className="aa-offline-badge" title="Assistant is running in Local Rule-based mode because API key is missing.">
+                      {lang === 'en' ? 'Local Mode' : 'உள்ளூர் பயன்முறை'}
                     </span>
                   )}
                 </div>

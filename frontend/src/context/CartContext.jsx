@@ -44,6 +44,7 @@ export const CartProvider = ({ children }) => {
       name: product.name,
       price: product.price,
       image: product.image,
+      farmer: product.farmer, // ✅ Persist seller info
     };
 
     setCartItems((prev) => [...prev, { ...newItem, quantity: 1 }]);

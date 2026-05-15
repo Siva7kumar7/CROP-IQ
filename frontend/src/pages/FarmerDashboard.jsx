@@ -135,8 +135,8 @@ const FarmerDashboard = () => {
 
       {/* HEADER */}
       <div className="dash-header">
-        <h1 className="gradient-text">👨‍🌾 Command Center</h1>
-        <p>Your agricultural hub for managing inventory, tracking revenue &amp; fulfilling orders.</p>
+        <h1 className="gradient-text">🚜 Farmer Agri-Dashboard</h1>
+        <p>Manage your inventory, track personal revenue, and fulfill your customer orders.</p>
       </div>
 
       {/* FINANCIAL ANALYTICS */}

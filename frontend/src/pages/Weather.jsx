@@ -100,9 +100,16 @@ const Weather = () => {
       if (!wRes.ok || !fRes.ok) throw new Error("API error");
       const wData = await wRes.json();
       const fData = await fRes.json();
-      setWeather(wData);
+
+      if (wData.success) {
+        setWeather(wData);
+      } else {
+        setError(wData.error || "Failed to predict weather");
+      }
+
       setForecast(Array.isArray(fData.forecast) ? fData.forecast : fData.forecast ? [fData.forecast] : []);
-    } catch {
+    } catch (err) {
+      console.error(err);
       setError("Failed to load weather data. Please check your backend.");
     } finally { setLoading(false); }
   };

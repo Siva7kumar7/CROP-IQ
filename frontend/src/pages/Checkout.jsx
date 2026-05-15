@@ -1,4 +1,4 @@
-import "./Checkout.css";
+  import "./Checkout.css";
 import { useCart } from "../context/CartContext";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
@@ -134,7 +134,7 @@ const Checkout = () => {
                     <small className="summary-meta">
                       Qty: {item.quantity || 1} · {item.category || ""} · {item.location || "Tamil Nadu"}
                     </small>
-                    <small className="summary-seller">👨‍🌾 {item.seller || "Local Farmer"}</small>
+                    <small className="summary-seller">👨‍🌾 {item.farmer || "Local Farmer"}</small>
                   </div>
                 </div>
                 <span className="summary-price">₹{item.price * (item.quantity || 1)}</span>

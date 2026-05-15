@@ -187,11 +187,12 @@
 /* ===== LOGO ===== */
 .auth-logo {
   width: auto;
-  height: 60px;
+  height: 100px;
   object-fit: contain;
-  margin: 0 auto 12px;
+  margin: 0 auto 16px;
   mix-blend-mode: screen;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4)) brightness(1.1);
+  display: block;
 }
 
 /* ===== MODAL ===== */

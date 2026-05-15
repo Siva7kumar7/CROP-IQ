@@ -38,7 +38,7 @@ const Home = () => {
           <div className="home-features-grid">
             <div className="home-card" onClick={() => navigate("/plant-detection")}>
               <div className="home-card-icon">🌿</div>
-              <h3>AI Disease Detection</h3>
+              <h3>ML Disease Detection</h3>
               <p>Upload a leaf photo and get instant diagnosis with treatment plans powered by Computer Vision.</p>
               <div className="home-card-cta">Analyze Now →</div>
             </div>

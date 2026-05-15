@@ -58,10 +58,16 @@ const PlantDisease = () => {
     setUseCamera(true);
     setResult(null);
 
-    const stream = await navigator.mediaDevices.getUserMedia({
-      video: true,
-    });
-    videoRef.current.srcObject = stream;
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: true,
+      });
+      videoRef.current.srcObject = stream;
+    } catch (err) {
+      console.error("Camera access error:", err);
+      alert("Could not access camera. Please check your browser permissions.");
+      setUseCamera(false);
+    }
   };
 
   /* ---------- VOICE HELPERS ---------- */
