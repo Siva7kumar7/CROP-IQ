@@ -452,7 +452,7 @@ def detect_plant_disease():
         img_input = preprocess_image(img)
 
         # Feature extraction
-        features = feature_extractor.predict(img_input, verbose=0)
+        features = feature_extractor(img_input).numpy()
         features_scaled = scaler.transform(features)
 
         # SVM prediction

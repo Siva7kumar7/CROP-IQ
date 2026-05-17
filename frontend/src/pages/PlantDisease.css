@@ -518,7 +518,7 @@
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-  .pd-container { padding: 36px 24px; margin: 20px; }
+  .pd-container { padding: 36px 24px; margin: 0 auto; }
   .pd-container h1 { font-size: 30px; }
   .preview-box img { max-height: 220px; }
   .result-item { flex-direction: column; align-items: flex-start; gap: 5px; }
