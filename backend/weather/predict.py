@@ -14,6 +14,9 @@ MODEL_DIR = os.path.join(BASE_DIR, "models")
 RF_MODEL_PATH = os.path.join(MODEL_DIR, "rain_rf.pkl")
 SCALER_PATH = os.path.join(MODEL_DIR, "scaler.pkl")
 
+rf_model = None
+scaler = None
+
 def load_weather_models():
     global rf_model, scaler
     if rf_model is not None:
