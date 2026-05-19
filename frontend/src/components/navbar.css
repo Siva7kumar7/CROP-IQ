@@ -279,4 +279,12 @@
   .auth-buttons {
     display: none;
   }
+
+  .mobile-only {
+    display: block;
+  }
+}
+
+.mobile-only {
+  display: none;
 }

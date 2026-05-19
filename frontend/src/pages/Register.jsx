@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import API_BASE_URL from "../apiConfig";
-import logo from "../assets/logo_new.png";
+import logo from "../assets/logo1.png";
 import "./Auth.css";
 
 const Register = () => {

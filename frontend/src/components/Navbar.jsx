@@ -55,6 +55,8 @@ const Navbar = () => {
           <>
             <li><NavLink to="/home">Home</NavLink></li>
             <li><NavLink to="/marketplace">Market</NavLink></li>
+            <li className="mobile-only"><NavLink to="/login">Login</NavLink></li>
+            <li className="mobile-only"><NavLink to="/register">Register</NavLink></li>
           </>
         )}
       </ul>
