@@ -42,6 +42,15 @@ bcrypt = Bcrypt(app)
 
 app.register_blueprint(weather_bp, url_prefix="/api")
 
+@app.route("/api/test-db", methods=["GET"])
+def test_db():
+    try:
+        from db import client
+        client.admin.command('ping')
+        return jsonify({"status": "Connected to MongoDB successfully!"})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 
 # ================= REGISTER =================
 @app.route("/api/register", methods=["POST"])
@@ -72,24 +81,28 @@ def register():
 # ================= LOGIN =================
 @app.route("/api/login", methods=["POST"])
 def login():
-    data = request.json
+    try:
+        data = request.json
 
-    email = data.get("email")
-    password = data.get("password")
-    role = data.get("role")
+        email = data.get("email")
+        password = data.get("password")
+        role = data.get("role")
 
-    user = user_collection.find_one({"email": email, "role": role})
+        user = user_collection.find_one({"email": email, "role": role})
 
-    if user and bcrypt.check_password_hash(user["password"], password):
-        return jsonify({
-            "message": "Login successful",
-            "name": user["name"],
-            "role": user["role"],
-            "email": user["email"],
-            "token": "agriverse-session-active"
-        })
-    else:
-        return jsonify({"message": "Invalid credentials"}), 401
+        if user and bcrypt.check_password_hash(user["password"], password):
+            return jsonify({
+                "message": "Login successful",
+                "name": user["name"],
+                "role": user["role"],
+                "email": user["email"],
+                "token": "agriverse-session-active"
+            })
+        else:
+            return jsonify({"message": "Invalid credentials"}), 401
+    except Exception as e:
+        logger.error(f"Login error: {e}")
+        return jsonify({"message": "Database connection failed. Please check backend configuration."}), 500
 
 
 # ================= FORGOT PASSWORD =================
