@@ -53,7 +53,7 @@ const Login = () => {
         alert(data.message || "Login failed");
       }
     } catch (error) {
-      alert("Server error - please check if backend is running");
+      alert("Connection Error: " + error.message);
       console.error(error);
     } finally {
       setLoading(false);
