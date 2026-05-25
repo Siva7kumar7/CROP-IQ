@@ -8,7 +8,7 @@ load_dotenv()
 # SINGLE DATABASE CONNECTION — ALL modules import from here
 # =====================================================
 mongo_uri = os.environ.get("MONGO_URI", "mongodb://localhost:27017/")
-client = MongoClient(mongo_uri)
+client = MongoClient(mongo_uri, serverSelectionTimeoutMS=5000)
 db = client["agriverse_db"]
 
 # Collections

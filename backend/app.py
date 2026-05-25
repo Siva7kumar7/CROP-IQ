@@ -55,27 +55,31 @@ def test_db():
 # ================= REGISTER =================
 @app.route("/api/register", methods=["POST"])
 def register():
-    data = request.json
+    try:
+        data = request.json
 
-    name = data.get("name")
-    email = data.get("email")
-    password = data.get("password")
-    role = data.get("role")
+        name = data.get("name")
+        email = data.get("email")
+        password = data.get("password")
+        role = data.get("role")
 
-    # Check existing user
-    if user_collection.find_one({"email": email}):
-        return jsonify({"message": "User already exists"}), 400
+        # Check existing user
+        if user_collection.find_one({"email": email}):
+            return jsonify({"message": "User already exists"}), 400
 
-    hashed_password = bcrypt.generate_password_hash(password).decode("utf-8")
+        hashed_password = bcrypt.generate_password_hash(password).decode("utf-8")
 
-    user_collection.insert_one({
-        "name": name,
-        "email": email,
-        "password": hashed_password,
-        "role": role
-    })
+        user_collection.insert_one({
+            "name": name,
+            "email": email,
+            "password": hashed_password,
+            "role": role
+        })
 
-    return jsonify({"message": "Registration successful"})
+        return jsonify({"message": "Registration successful"})
+    except Exception as e:
+        logger.error(f"Registration error: {e}")
+        return jsonify({"message": "Database connection failed. Please check backend configuration."}), 500
 
 
 # ================= LOGIN =================
